@@ -45,7 +45,7 @@ function App() {
     inputRef.current.focus();
   }, []);
   return (
-    <div className="mx-auto max-w-7xl">
+    <div className="mx-auto max-w-7xl px-4">
       <Navbar />
       <main className="mt-3 min-h-screen space-y-4">
         <h2 className="mx-auto w-full text-center text-lg sm:text-4xl md:w-1/3">
@@ -65,7 +65,17 @@ function App() {
             Search
           </button>
         </form>
-        {!!Object.keys(data).length > 0 && <Card data={data} />}
+        {!!Object.keys(data).length > 0 && (
+          <>
+            <h3 className="text-sm text-orange-500 sm:text-3xl ">
+              {data.city.name}
+            </h3>
+            <p className="text-sm sm:text-2xl">
+              5-Day Weather Forecast for {data.city.name}
+            </p>
+            <Card data={data} />
+          </>
+        )}
       </main>
       <Footer />
     </div>
