@@ -4,6 +4,7 @@ import "./App.css";
 import Card from "./components/Card";
 import Navbar from "./components/ui/Navbar";
 import Footer from "./components/ui/Footer";
+import Search from "./components/ui/Search";
 
 function App() {
   const [data, setData] = useState({});
@@ -46,22 +47,19 @@ function App() {
   return (
     <div className="mx-auto max-w-7xl">
       <Navbar />
-      <main className="min-h-screen">
-        <h2 className="mx-auto w-1/3 text-center text-4xl">
+      <main className="mt-3 min-h-screen space-y-4">
+        <h2 className="mx-auto w-full text-center text-lg sm:text-4xl md:w-1/3">
           Discover the weather in every city you go
         </h2>
         <form
           onSubmit={handleSearch}
           className="flex items-center justify-center gap-2"
         >
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            placeholder="Enter location"
-            onKeyDown={handleKeyPress}
-            ref={inputRef}
-            className=" h-12 w-72 rounded-lg bg-slate-500"
+          <Search
+            location={location}
+            setLocation={setLocation}
+            handleKeyPress={handleKeyPress}
+            inputRef={inputRef}
           />
           <button className=" rounded-lg bg-green-500 p-3 text-white">
             Search
