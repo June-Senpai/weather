@@ -61,10 +61,10 @@ function App() {
         {!!Object.keys(data).length > 0 && (
           <>
             <div className="flex flex-wrap items-center gap-2">
-              <h3 className="text-primary text-sm sm:text-3xl ">
+              <h3 className="text-primary text-lg sm:text-3xl ">
                 {data.city.name} :-
               </h3>
-              <p className="text-sm sm:text-2xl">
+              <p className="text-base sm:text-2xl">
                 5-Day Weather Forecast for {data.city.name}
               </p>
             </div>

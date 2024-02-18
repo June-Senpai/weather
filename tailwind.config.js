@@ -6,6 +6,7 @@ export default {
     extend: {
       colors: {
         primary: "hsl(348, 81%, 63%)",
+        darkSecondary: "#5E565A",
       },
     },
   },
