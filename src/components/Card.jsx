@@ -16,10 +16,12 @@ const Card = ({ data }) => {
         {dailyForecasts.map((forecast, index) => (
           <div
             key={index}
-            className={`group relative h-36 w-16 rounded-xl rounded-tl-none bg-red-500 transition-[width] duration-500 hover:w-60 ${index === 0 && "w-60"}`}
+            className={`group relative h-44 w-16 rounded-3xl bg-slate-500 transition-[width] duration-500 hover:w-60 ${index === 0 && "w-60"}`}
           >
-            <section className="">
-              <h2 className="absolute -top-5 rounded-lg bg-red-500 p-1">
+            <section
+              className={`flex flex-col items-center pt-2 group-hover:hidden ${index === 0 && "hidden"}`}
+            >
+              <h2 className="bg-primary rounded-full p-1 ">
                 {formatDayOfMonth(forecast.dt_txt)}
               </h2>
               <div
@@ -29,7 +31,7 @@ const Card = ({ data }) => {
               </div>
             </section>
             <section
-              className={`ml-2 mt-3 h-32 whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${index === 0 && "opacity-100"}`}
+              className={`ml-2 mt-3 whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${index === 0 && "opacity-100"}`}
             >
               <p>Date: {formatDate(forecast.dt_txt)}</p>
               <p>Temperature: {forecast.main.temp} K</p>

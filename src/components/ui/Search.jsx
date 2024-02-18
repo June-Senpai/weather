@@ -10,7 +10,7 @@ const Search = ({ location, setLocation, handleKeyPress, inputRef }) => {
         placeholder="Enter location"
         onKeyDown={handleKeyPress}
         ref={inputRef}
-        className=" h-12 w-72 rounded-lg bg-slate-500 p-3"
+        className=" h-12 w-72 rounded-lg p-3 outline dark:bg-slate-500"
       />
       <img
         src="/search-icon.webp"

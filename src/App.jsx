@@ -54,18 +54,20 @@ function App() {
             handleKeyPress={handleKeyPress}
             inputRef={inputRef}
           />
-          <button className=" rounded-lg bg-green-500 p-3 text-white">
+          <button className=" bg-primary rounded-lg p-3 text-white">
             Search
           </button>
         </form>
         {!!Object.keys(data).length > 0 && (
           <>
-            <h3 className="text-sm text-orange-500 sm:text-3xl ">
-              {data.city.name}
-            </h3>
-            <p className="text-sm sm:text-2xl">
-              5-Day Weather Forecast for {data.city.name}
-            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="text-primary text-sm sm:text-3xl ">
+                {data.city.name} :-
+              </h3>
+              <p className="text-sm sm:text-2xl">
+                5-Day Weather Forecast for {data.city.name}
+              </p>
+            </div>
             <Card data={data} />
           </>
         )}
