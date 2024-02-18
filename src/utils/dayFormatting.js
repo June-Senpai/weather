@@ -1,12 +1,8 @@
-// dayFormatting.js
 const formatDayOfMonth = (dateString) => {
-  // Parse the date string into a Date object
   const date = new Date(dateString);
 
-  // Get the day of the month
   const day = date.getDate();
 
-  // Convert the day to a string and add the appropriate suffix (st, nd, rd, or th)
   let dayString;
   if (day >= 11 && day <= 13) {
     dayString = `${day}th`;

@@ -1,12 +1,8 @@
-// dateFormatting.js
 const formatDate = (dateString) => {
-  // Parse the date string into a Date object
   const date = new Date(dateString);
 
-  // Get the day of the month
   const day = date.getDate();
 
-  // Convert the day to a string and add the appropriate suffix (st, nd, rd, or th)
   let dayString;
   if (day >= 11 && day <= 13) {
     dayString = `${day}th`;
@@ -26,7 +22,6 @@ const formatDate = (dateString) => {
     }
   }
 
-  // Get the month name
   const monthNames = [
     "January",
     "February",
@@ -43,10 +38,8 @@ const formatDate = (dateString) => {
   ];
   const month = monthNames[date.getMonth()];
 
-  // Get the year
   const year = date.getFullYear();
 
-  // Return the formatted date string
   return `${dayString} ${month} ${year}`;
 };
 

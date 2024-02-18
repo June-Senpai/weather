@@ -9,6 +9,9 @@ import Search from "./components/ui/Search";
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
+  const [theme, setTheme] = useState(getInitialTheme());
+
+  const element = document.documentElement;
   const inputRef = useRef(null);
 
   const handleSearch = () => {
@@ -34,19 +37,62 @@ function App() {
       });
   };
 
+  function getInitialTheme() {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      return storedTheme;
+    }
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    return prefersDarkMode ? "dark" : "light";
+  }
+
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
       handleSearch();
     }
   };
+  const setSystemTheme = () => {
+    setTheme("system");
+  };
+
+  useEffect(() => {
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    switch (theme) {
+      case "dark":
+        element.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        break;
+      case "light":
+        element.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        break;
+      default:
+        setTheme(prefersDarkMode ? "dark" : "light");
+        break;
+    }
+  }, [theme]);
 
   useEffect(() => {
     inputRef.current.focus();
   }, []);
   return (
-    <div className="mx-auto max-w-7xl px-4">
+    <div className="mx-auto max-w-7xl px-4 dark:bg-black">
       <Navbar />
+      <div className="flex gap-5">
+        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+          {theme === "dark" ? "Light" : "Dark"} Mode
+        </button>
+        <button onClick={() => setTheme("dark")}>Dark</button>
+        <button onClick={() => setTheme("light")}>
+          {theme === "dark" ? "hi" : "bye"}
+        </button>
+        <button onClick={setSystemTheme}>System</button>
+      </div>
       <main className="mt-3 min-h-screen space-y-4">
         <h2 className="mx-auto w-full text-center text-lg sm:text-4xl md:w-1/3">
           Discover the weather in every city you go

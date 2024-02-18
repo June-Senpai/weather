@@ -2,7 +2,7 @@ const Navbar = () => {
   return (
     <header>
       <nav className="relative ml-2">
-        <div className="ml-14 mt-2 p-4 text-lg md:text-2xl">
+        <div className="ml-14 p-4 pt-2 text-lg md:text-2xl">
           Weather Forecast
         </div>
         <img
