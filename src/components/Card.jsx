@@ -14,7 +14,7 @@ const Card = ({ data }) => {
 
   return (
     <div className="">
-      <section className="flex flex-wrap gap-4">
+      <section className="flex flex-wrap items-center justify-center gap-8">
         {dailyForecasts.map((forecast, index) => (
           <div
             key={index}
@@ -37,10 +37,14 @@ const Card = ({ data }) => {
             >
               <p>Date: {formatDate(forecast.dt_txt)}</p>
               <p>
-                Temperature: <TemperatureInC temp={forecast.main.temp} />
+                <span className="text-primary">Temperature:</span>{" "}
+                <TemperatureInC temp={forecast.main.temp} />
               </p>
               <p>Weather: {forecast.weather[0].description}</p>
-              <p>Humidity: {forecast.main.humidity}%</p>
+              <p>
+                <span className="text-primary">Humidity:</span>{" "}
+                {forecast.main.humidity}%
+              </p>
               <p>Wind Speed: {forecast.wind.speed} m/s</p>
             </section>
           </div>

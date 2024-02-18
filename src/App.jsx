@@ -38,40 +38,44 @@ function App() {
     inputRef.current.focus();
   }, []);
   return (
-    <div className="mx-auto max-w-7xl px-4 dark:bg-black dark:text-white">
-      <Navbar />
-      <main className="mt-3 min-h-screen space-y-4">
-        <h2 className="mx-auto w-full text-center text-lg sm:text-4xl md:w-1/3">
-          Discover the weather in every city you go
-        </h2>
-        <form
-          onSubmit={handleSearch}
-          className="flex items-center justify-center gap-2"
-        >
-          <Search
-            location={location}
-            setLocation={setLocation}
-            handleKeyPress={handleKeyPress}
-            inputRef={inputRef}
-          />
-          <button className=" bg-primary rounded-lg p-3 text-white">
-            Search
-          </button>
-        </form>
-        {!!Object.keys(data).length > 0 && (
-          <>
-            <div className="flex flex-wrap items-center gap-2">
-              <h3 className="text-primary text-lg sm:text-3xl ">
-                {data.city.name} :-
-              </h3>
-              <p className="text-base sm:text-2xl">
-                5-Day Weather Forecast for {data.city.name}
-              </p>
-            </div>
-            <Card data={data} />
-          </>
-        )}
-      </main>
+    <div className="dark:bg-black dark:text-white">
+      <div className="mx-auto max-w-7xl px-4 ">
+        <Navbar />
+        <main className="min-h-screen space-y-4 pb-4 lg:h-screen lg:overflow-y-hidden lg:pb-0">
+          <h2 className="mx-auto mb-12 mt-12 w-full text-center text-lg sm:text-4xl md:w-1/3">
+            Discover the weather in every city you go
+          </h2>
+          <form
+            onSubmit={handleSearch}
+            className=" flex items-center justify-center gap-2"
+          >
+            <Search
+              location={location}
+              setLocation={setLocation}
+              handleKeyPress={handleKeyPress}
+              inputRef={inputRef}
+            />
+            <button className=" bg-primary rounded-lg p-3 text-white">
+              Search
+            </button>
+          </form>
+          <div className="hidden h-[15vh]   lg:block"></div>
+          {!!Object.keys(data).length > 0 && (
+            <>
+              <div className=" flex flex-wrap items-center justify-center gap-2">
+                <h3 className="text-primary text-lg sm:text-3xl ">
+                  {data.city.name} :-
+                </h3>
+                <p className="text-base sm:text-2xl">
+                  5-Day Weather Forecast for {data.city.name}
+                </p>
+              </div>
+              <div className="hidden h-[10vh]   lg:block"></div>
+              <Card data={data} />
+            </>
+          )}
+        </main>
+      </div>
       <Footer />
     </div>
   );
